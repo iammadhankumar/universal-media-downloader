@@ -22,9 +22,6 @@ app.add_middleware(
 async def extract_media(url: str = Query(..., description="The media URL to extract")):
     if not url:
         raise HTTPException(status_code=400, detail="Missing required 'url' parameter.")
-  
-    current_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    cookie_path = os.path.join(current_dir, 'cookies.txt')
 
     # High-compatibility configuration to mimic organic user traffic
     ydl_opts = {
@@ -49,12 +46,6 @@ async def extract_media(url: str = Query(..., description="The media URL to extr
             'Accept-Language': 'en-US,en;q=0.9',
         }
     }
-
-    if os.path.exists(cookie_path):
-        logger.info(f"Authenticating session using local configuration file: {cookie_path}")
-        ydl_opts['cookiefile'] = cookie_path
-    else:
-        logger.warning("No authentication cookie file detected. Proceeding with raw connection parameters.")
 
     try:
         logger.info(f"Processing extraction request for URL: {url}")
