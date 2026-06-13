@@ -5,7 +5,7 @@
 
 // Replace with your production URL after deploying your backend Vercel script
 const CONFIG = {
-    API_ENDPOINT: "https://your-vercel-project-name.vercel.app/api"
+    API_ENDPOINT: "https://mk-mediafetch-pro.vercel.app/api"
 };
 
 document.addEventListener('DOMContentLoaded', () => {
