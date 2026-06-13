@@ -37,8 +37,7 @@ async def extract_media(url: str = Query(..., description="The media URL to extr
             'Sec-Fetch-Mode': 'navigate',
         },
         'extractor_args': {
-            'instagram': {'allow_anonymous': True},
-            'twitter': {'api': 'graphql'}
+            'instagram': {'allow_anonymous': True}
         }
     }
 
