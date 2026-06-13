@@ -30,14 +30,20 @@ async def extract_media(url: str = Query(..., description="The media URL to extr
         'quiet': True,
         'no_warnings': True,
         'socket_timeout': 15,
-        'http_headers': {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
-            'Accept-Language': 'en-US,en;q=0.5',
-            'Sec-Fetch-Mode': 'navigate',
-        },
+        
+        # BYPASS FIX: Force YouTube to process via Safari & Embedded pipelines
+        # This completely skips the strict desktop bot-verification layers!
         'extractor_args': {
+            'youtube': {
+                'player_client': ['web_safari', 'web_embedded']
+            },
             'instagram': {'allow_anonymous': True}
+        },
+        
+        'http_headers': {
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Safari/605.1.15',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+            'Accept-Language': 'en-US,en;q=0.9',
         }
     }
 
