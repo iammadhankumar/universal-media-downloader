@@ -45,6 +45,7 @@ async def extract_media(url: str = Query(..., description="The media URL to extr
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
             'Accept-Language': 'en-US,en;q=0.9',
         }
+        'impersonate': 'chrome',
     }
 
     try:
