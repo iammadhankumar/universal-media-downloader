@@ -16,7 +16,7 @@
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
+      "src": "/api",
       "dest": "api/index.py"
     },
     {
@@ -24,7 +24,7 @@
       "dest": "/app.js"
     },
     {
-      "src": "/(.*)",
+      "src": "/((?!api).*)" ,
       "dest": "/index.html"
     }
   ]
