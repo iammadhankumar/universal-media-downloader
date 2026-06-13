@@ -32,8 +32,14 @@
                 Any Platform. <span class="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">Any Video.</span>
             </h1>
             <p class="text-slate-400 text-base sm:text-lg max-w-xl mx-auto">
-                High-speed metadata extraction pipelines for decentralized video backups.
+                The easiest way to extract video links and backup your media.
             </p>
+            <div class="mt-4 p-2.5 bg-amber-500/5 border border-amber-500/10 text-amber-400/90 rounded-xl inline-flex items-center gap-2 mx-auto">
+                    <i class="fa-solid fa-circle-exclamation text-[11px] shrink-0"></i>
+                    <div class="text-[11px] font-medium tracking-wide text-left">
+                        <span class="font-bold uppercase tracking-wider text-[9px] mr-1 bg-amber-500/10 px-1.5 py-0.5 rounded text-amber-400">Notice</span> YouTube is down for maintenance. Fix coming soon!
+                    </div>
+            </div>
         </div>
 
         <div class="bg-slate-900/40 border border-slate-800/80 rounded-3xl p-6 sm:p-8 shadow-2xl backdrop-blur-md">
@@ -59,6 +65,16 @@
                     <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
                 </button>
             </form>
+
+            <div class="flex justify-end mt-2">
+                <button 
+                    type="button" 
+                    id="clearBtn" 
+                    class="hidden text-xs font-semibold text-slate-500 hover:text-slate-300 transition-colors cursor-pointer flex items-center gap-1.5 px-2 py-1 rounded-md hover:bg-slate-900/60"
+                >
+                    <i class="fa-solid fa-trash-can text-[10px]"></i> Clear Form
+                </button>
+            </div>
 
             <div id="loadingState" class="hidden flex-col items-center justify-center py-14">
                 <div class="relative w-14 h-14">

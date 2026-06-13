@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
         form: document.getElementById('downloadForm'),
         input: document.getElementById('videoUrl'),
         submitBtn: document.getElementById('submitBtn'),
+        clearBtn: document.getElementById('clearBtn'),
         loader: document.getElementById('loadingState'),
         errorPanel: document.getElementById('errorState'),
         errorMsg: document.getElementById('errorMessage'),
