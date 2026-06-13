@@ -24,6 +24,26 @@ document.addEventListener('DOMContentLoaded', () => {
         downloadBtn: document.getElementById('resDownloadLink')
     };
 
+    DOM.input.addEventListener('input', () => {
+        if (DOM.input.value.trim().length > 0) {
+            DOM.clearBtn.classList.remove('hidden');
+        } else if (DOM.resultPanel.classList.contains('hidden') && DOM.errorPanel.classList.contains('hidden')) {
+            DOM.clearBtn.classList.add('hidden');
+        }
+    });
+
+    // Clear Button Logic Execution
+    DOM.clearBtn.addEventListener('click', () => {
+        DOM.input.value = ""; // Erase input text
+        DOM.errorPanel.classList.add('hidden'); // Hide old error boxes
+        DOM.resultPanel.classList.add('hidden'); // Hide previous download cards
+        DOM.clearBtn.classList.add('hidden'); // Hide itself
+        
+        // Reset image bindings safely
+        DOM.thumb.src = "";
+        DOM.thumb.onerror = null;
+    });
+
     DOM.form.addEventListener('submit', async (event) => {
         event.preventDefault();
         const targetedMediaUrl = DOM.input.value.trim();
@@ -34,6 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
         DOM.loader.classList.remove('hidden');
         DOM.submitBtn.disabled = true;
         DOM.submitBtn.classList.add('opacity-40', 'cursor-not-allowed');
+        DOM.clearBtn.classList.add('hidden');
 
         try {
             // Dispatch query extraction request across CORS pipeline boundary
@@ -76,6 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
             DOM.loader.classList.add('hidden');
             DOM.submitBtn.disabled = false;
             DOM.submitBtn.classList.remove('opacity-40', 'cursor-not-allowed');
+            DOM.clearBtn.classList.remove('hidden');
         }
     });
 });
