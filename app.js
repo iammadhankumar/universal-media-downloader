@@ -51,8 +51,17 @@ document.addEventListener('DOMContentLoaded', () => {
             // Bind incoming network metrics payload schema to DOM
             DOM.title.textContent = payload.title || "Target File Object";
             DOM.provider.textContent = payload.provider || "CDN Source";
-            DOM.thumb.src = payload.thumbnail || "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400";
             DOM.downloadBtn.href = payload.download_url;
+
+            DOM.thumb.onerror = null;
+
+            DOM.thumb.src = payload.thumbnail || "https://i.pinimg.com/1200x/fd/29/64/fd29649495d0d5d85a595570cc3ea9da.jpg";
+
+            // FALLBACK ONLY IF THE LIVE MEDIA THUMBNAIL FAILS TO SHOW:
+            DOM.thumb.onerror = function() {
+                this.src = "https://i.pinimg.com/1200x/fd/29/64/fd29649495d0d5d85a595570cc3ea9da.jpg";
+                this.onerror = null; // Prevents infinite loops if the backup image ever goes down
+            };
 
             // Trigger visual representation display modifications
             DOM.resultPanel.classList.remove('hidden');
